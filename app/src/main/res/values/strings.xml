@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">front-end</string>
+    <string name="GoogleMaps_Key">AIzaSyDhRAbW3mY-LUxQhIc_KGZV1Ui0-JpB-ZA</string>
+    <string name="SnowBoy_key">68bd7ea6caa46606f3ce666829ed2daf9911910d</string>
+
+    <string name="hotwordtrain_ins">This is where you train your personel hotword. It can only be triggered by your voice. So to get started, you need to choose a hotword and say it 3 times. Press the start and the stop button for each word.</string>
+</resources>
