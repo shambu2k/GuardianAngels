@@ -42,9 +42,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //Speech To text
-    implementation 'net.gotev:speech:1.4.0'
-
     //Retrofit
     implementation 'com.google.code.gson:gson:2.6.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
@@ -54,5 +51,7 @@ dependencies {
     //Google play services
     implementation 'com.google.android.gms:play-services:12.0.1'
     compile 'com.sothree.slidinguppanel:library:3.4.0'
+
+    compile 'com.github.vikramezhil:DroidSpeech:v2.0.3'
 
 }

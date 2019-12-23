@@ -30,6 +30,10 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.vikramezhil.droidspeech.DroidSpeech;
+import com.vikramezhil.droidspeech.OnDSListener;
+import com.vikramezhil.droidspeech.OnDSPermissionsListener;
+
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -44,8 +48,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
+        DialogInterface.OnClickListener, OnDSListener, OnDSPermissionsListener {
 
+    DroidSpeech droidSpeech;
     private String TAG = "MainActivity";
     private String uid;
     Button sos, lendHelp, trainhw;
@@ -111,6 +117,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        droidSpeech = new DroidSpeech(this, null);
+        droidSpeech.setOnDroidSpeechListener(this);
+
 
         Intent intent = getIntent();
         uid = intent.getStringExtra("userID");
@@ -263,6 +273,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        droidSpeech.startDroidSpeechRecognition();
         Log.d(TAG, "Map is ready");
         mMap = googleMap;
         mMap.setOnMarkerClickListener(this);
@@ -323,5 +334,65 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
         return false;
+    }
+
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+
+    }
+
+    @Override
+    public void onDroidSpeechSupportedLanguages(String currentSpeechLanguage, List<String> supportedSpeechLanguages) {
+
+    }
+
+    @Override
+    public void onDroidSpeechRmsChanged(float rmsChangedValue) {
+
+    }
+
+    @Override
+    public void onDroidSpeechLiveResult(String liveSpeechResult) {
+
+        Log.d(TAG, liveSpeechResult);
+        if(liveSpeechResult.contains("Domino")){
+            sosToggle = true;
+            mHandlerTaskV.run();
+            sos.setText("Stop SOS");
+            Toast.makeText(getApplicationContext(), "Hotword Triggered", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onDroidSpeechFinalResult(String finalSpeechResult) {
+        if(finalSpeechResult.contains("Domino")){
+            sosToggle = true;
+            mHandlerTaskV.run();
+            sos.setText("Stop SOS");
+            Toast.makeText(getApplicationContext(), "Triggered", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onDroidSpeechClosedByUser() {
+
+    }
+
+    @Override
+    public void onDroidSpeechError(String errorMsg) {
+
+    }
+
+    @Override
+    public void onDroidSpeechAudioPermissionStatus(boolean audioPermissionGiven, String errorMsgIfAny) {
+
     }
 }

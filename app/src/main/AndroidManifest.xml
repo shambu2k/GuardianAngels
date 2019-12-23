@@ -34,7 +34,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" android:theme="@style/AppThemeNAB" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppThemeNAB">

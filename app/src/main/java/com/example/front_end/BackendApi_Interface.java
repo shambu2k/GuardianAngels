@@ -9,8 +9,7 @@ import retrofit2.http.POST;
 
 public interface BackendApi_Interface {
 
-    public String BASE_URL = "http://172.31.99.226:12345";
-
+    public String BASE_URL = "http://05271d04.ngrok.io";
     @FormUrlEncoded
     @POST("/login")
     Call<LoginAuth> LogIn( @Field("user") String username, @Field("pass") String password);

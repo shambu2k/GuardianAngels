@@ -17,27 +17,31 @@
 
     <Button
         android:id="@+id/sos_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        android:text="SOS"/>
-
-    <Button
-        android:id="@+id/helpOn_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start|bottom"
-        android:layout_margin="16dp"
-        android:text="Lend Help"/>
-
-    <Button
-        android:id="@+id/train_hw"
+        android:background="#FF0000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_margin="16dp"
-        android:text="Train Hotword"/>
+        android:textColor="#FFFFFF"
+        android:text="SOS"/>
+
+    <Button
+        android:id="@+id/helpOn_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="16dp"
+        android:text="Lend Help" />
+
+    <Button
+        android:id="@+id/train_hw"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:text="Train Hotword" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
